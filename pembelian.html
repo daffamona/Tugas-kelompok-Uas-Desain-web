@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kasir - Jam Tangan</title>
+  <link rel="stylesheet" href="jam.css">
+</head>
+<body>
+
+  <!-- FORM PEMBELIAN -->
+  <section class="kasir" id="kasir">
+    <h3>Pembelian</h3>
+
+    <label for="nama">Nama Pembeli:</label>
+    <input type="text" id="nama" placeholder="Masukkan nama lengkap">
+
+    <label for="nomor">Nomor HP:</label>
+    <input type="tel" id="nomor" placeholder="08xxxxxxxxxx">
+
+    <label for="tanggal">Tanggal Pembelian:</label>
+    <input type="date" id="tanggal">
+
+    <label for="produkSelect">Pilih Produk:</label>
+    <select id="produkSelect">
+      <option value="0">-- Pilih Produk --</option>
+      <option value="5000000">Rolex - Rp5.000.000</option>
+      <option value="1500000">Casio - Rp1.500.000</option>
+      <option value="3500000">Breitling - Rp3.500.000</option>
+      <option value="4000000">Omega - Rp4.000.000</option>
+    </select>
+
+    <label for="jumlah">Jumlah:</label>
+    <input type="number" id="jumlah" min="1" value="1" />
+
+    <label for="alamat">Alamat Pengiriman:</label>
+    <textarea id="alamat" placeholder="Masukkan alamat lengkap..."></textarea>
+
+    <label for="metode">Metode Pembayaran:</label>
+    <select id="metode">
+      <option value="cod">COD (Bayar di Tempat)</option>
+      <option value="kartu">Kartu Kredit / Debit</option>
+    </select>
+
+    <button onclick="hitungTotal()">Pesan & Beli</button>
+    <div class="result" id="totalHarga">Total Harga: Rp0</div>
+  </section>
+
+  <script>
+    // Isi otomatis data produk jika dikirim dari tombol sebelumnya
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const produk = urlParams.get('produk');
+      const harga = urlParams.get('harga');
+
+      if (produk && harga) {
+        const select = document.getElementById('produkSelect');
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.toLowerCase().includes(produk.toLowerCase())) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    };
+
+    function hitungTotal() {
+      const select = document.getElementById('produkSelect');
+      const harga = parseInt(select.value);
+      const produkNama = select.options[select.selectedIndex].text.split(' - ')[0];
+      const jumlah = parseInt(document.getElementById('jumlah').value);
+      const alamat = document.getElementById('alamat').value.trim();
+      const metode = document.getElementById('metode').value;
+
+      const nama = document.getElementById('nama').value.trim();
+      const nomor = document.getElementById('nomor').value.trim();
+      const tanggal = document.getElementById('tanggal').value;
+
+      if (!nama || !nomor || !tanggal || !harga || !jumlah || alamat === '') {
+        document.getElementById('totalHarga').textContent = 'Silakan lengkapi semua data pembelian.';
+        return;
+      }
+
+      const total = harga * jumlah;
+
+      const url = `hasil.html?nama=${encodeURIComponent(nama)}&nomor=${encodeURIComponent(nomor)}&tanggal=${tanggal}&produk=${encodeURIComponent(produkNama)}&jumlah=${jumlah}&alamat=${encodeURIComponent(alamat)}&metode=${metode}&total=${total}`;
+
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>

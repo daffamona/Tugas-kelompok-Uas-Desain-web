@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jam Tangan - Toko Online</title>
+  <link rel="stylesheet" href="jam.css">
+</head>
+
+<body>
+  <header class="nav">
+    <div class="logo"><h1>Wat<b>ch</b></h1></div>
+    <div class="menu">
+      <ul class="menu-kiri">
+        <li><a href="beranda.html" target="_blank" class="nav-link">Beranda</a></li>
+        <li><a href="produk.html" target="_blank" class="nav-link">Produk</a></li>
+        <li><a href="layanan.html" target="_blank" class="nav-link">Layanan</a></li>
+        <li><a href="tentang.html" target="_blank" class="nav-link">Tentang</a></li>
+        <li><a href="pembelian.html" target="_blank" class="nav-link">Pembelian</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- JavaScript canva jam -->
+  <script>
+    setInterval(() => {
+      const now = new Date();
+      const second = now.getSeconds();
+      const minute = now.getMinutes();
+      const hour = now.getHours();
+
+      document.querySelector('.second').style.transform = `rotate(${second * 6}deg)`;
+      document.querySelector('.minute').style.transform = `rotate(${minute * 6 + second * 0.1}deg)`;
+      document.querySelector('.hour').style.transform = `rotate(${hour * 30 + minute * 0.5}deg)`;
+    }, 1000);
+  </script>
+
+  <section class="content">
+    <div class="content-left">
+      <h2>Jam tangan terbaik<br>temani setiap detikmu.</h2>
+      <p>Koleksi jam tangan premium untuk menunjang gaya dan kepercayaan diri Anda.</p>
+      <button onclick="document.getElementById('produk').scrollIntoView()">Lihat Produk</button>
+      <div class="clock">
+        <div class="hand hour" id="hourHand"></div>
+        <div class="hand minute" id="minuteHand"></div>
+        <div class="hand second" id="secondHand"></div>
+        <div class="center-dot"></div>
+      </div>
+    </div>
+    <div class="content-right">
+      <img src="Watch.jpeg" alt="Jam Elegan">
+    </div>
+  </section>
+
+  <section class="category" id="produk">
+    <h3>Produk Unggulan</h3>
+    <div class="card-list">
+      <div class="card">
+        <img src="Rolex.jpeg" alt="Rolex">
+        <div class="watch-title">Rolex</div>
+        <p>Desain elegan dan teknologi Swiss terbaik.</p>
+      </div>
+      <div class="card">
+        <img src="Jam Casio.jpeg" alt="Casio">
+        <div class="watch-title">Casio</div>
+        <p>Tangguh, sporty, dan terjangkau.</p>
+      </div>
+      <div class="card">
+        <img src="Jam Breitling.jpeg" alt="Breitling">
+        <div class="watch-title">Breitling</div>
+        <p>Presisi tinggi untuk petualang sejati.</p>
+      </div>
+      <div class="card">
+        <img src="Jam Omega.jpeg" alt="Omega">
+        <div class="watch-title">Omega</div>
+        <p>Ikon klasik yang mewah dan berkelas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category services" id="layanan">
+    <h3>Layanan Kami</h3>
+    <ul>
+      <li>✔ Garansi Resmi 2 Tahun</li>
+      <li>✔ Gratis Ongkir Seluruh Indonesia</li>
+      <li>✔ Pengembalian dalam 7 Hari</li>
+      <li>✔ Customer Service 24 Jam</li>
+    </ul>
+    <h4>Layanan Khusus untuk Jam Tangan Premium</h4>
+    <ul>
+      <li>🔧 Servis dan perawatan gratis selama masa garansi</li>
+      <li>📦 Kemasan eksklusif untuk koleksi mewah</li>
+      <li>🎁 Opsi personalisasi: ukiran nama & pesan khusus</li>
+      <li>🚚 Pengiriman cepat (1-3 hari kerja untuk kota besar)</li>
+      <li>📞 Konsultasi gaya dan produk via WhatsApp</li>
+    </ul>
+  </section>
+
+  <section class="category about" id="tentang">
+    <h3>Tentang Kami</h3>
+    <p>
+      <strong>Jam Tangan</strong> adalah toko online terpercaya yang menyediakan berbagai pilihan jam tangan premium dari merek-merek ternama dunia seperti Rolex, Casio, Omega, dan Breitling.  
+    </p>
+    <p>
+      Dengan komitmen terhadap kualitas dan layanan pelanggan, kami ingin memberikan pengalaman belanja yang aman, nyaman, dan memuaskan. Kami percaya bahwa setiap detik itu berarti, dan sebuah jam bukan hanya penunjuk waktu, tapi juga simbol gaya dan kepribadian.
+    </p>
+    <p>
+      Terima kasih telah mempercayai <strong>Jam Tangan</strong> sebagai pilihan utama Anda!
+    </p>
+  </section>

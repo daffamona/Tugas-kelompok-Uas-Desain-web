@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda - Jam Tangan</title>
+  <link rel="stylesheet" href="jam.css">
+</head>
+<body>
+
+  <!-- Navigasi -->
+  <header class="nav">
+    <div class="logo"><h1>Wat<b>ch</b></h1></div>
+    <div class="menu">
+      <ul class="menu-kiri">
+        <li><a href="beranda.html" class="nav-link">Beranda</a></li>
+        <li><a href="produk.html" class="nav-link">Produk</a></li>
+        <li><a href="layanan.html" class="nav-link">Layanan</a></li>
+        <li><a href="tentang.html" class="nav-link">Tentang</a></li>
+        <li><a href="pembelian.html" class="nav-link">Pembelian</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Konten Utama Beranda -->
+  <main>
+    <section class="category" id="produk">
+      <h3>Produk Unggulan</h3>
+      <div class="card-list">
+        <a href="rolex.html" class="card-link">
+          <div class="card">
+            <img src="Rolex.jpeg" alt="Rolex">
+            <div class="watch-title">Rolex</div>
+            <p>Desain elegan dan teknologi Swiss terbaik.</p>
+          </div>
+        </a>
+        <a href="casio.html" class="card-link">
+          <div class="card">
+            <img src="Jam Casio.jpeg" alt="Casio">
+            <div class="watch-title">Casio</div>
+            <p>Tangguh, sporty, dan terjangkau.</p>
+          </div>
+        </a>
+        <a href="breitling.html" class="card-link">
+          <div class="card">
+            <img src="Jam Breitling.jpeg" alt="Breitling">
+            <div class="watch-title">Breitling</div>
+            <p>Presisi tinggi untuk petualang sejati.</p>
+          </div>
+        </a>
+        <a href="omega.html" class="card-link">
+          <div class="card">
+            <img src="Jam Omega.jpeg" alt="Omega">
+            <div class="watch-title">Omega</div>
+            <p>Ikon klasik yang mewah dan berkelas.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chatbox -->
+  <div class="chatbox">
+    <div class="chatbox-header">Chat Bantuan</div>
+    <div class="chatbox-body" id="chatbox-body"></div>
+    <div class="chatbox-footer">
+      <input type="text" id="user-input" placeholder="Ketik pesan...">
+      <button onclick="sendMessage()">Kirim</button>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi untuk mengirim pesan
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const chatBody = document.getElementById('chatbox-body');
+      if (!input.value.trim()) return;
+
+      // Pesan user
+      chatBody.innerHTML += `<div class="chat-message user">${input.value}</div>`;
+
+      // Scroll ke bawah
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      // Pesan bot setelah 1 detik
+      setTimeout(() => {
+        chatBody.innerHTML += `<div class="chat-message bot">Terima kasih sudah menghubungi kami, apakah ada yang bisa kami bantu!</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 1000);
+
+      // Kosongkan input
+      input.value = '';
+    }
+  </script>
+
+</body>
+</html>

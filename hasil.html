@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ringkasan Pembelian</title>
+  <link rel="stylesheet" href="jam.css">
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .ringkasan {
+      max-width: 450px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px 25px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .ringkasan h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 22px;
+      border-bottom: 2px dashed #ccc;
+      padding-bottom: 10px;
+    }
+
+    .ringkasan p {
+      font-size: 16px;
+      margin: 8px 0;
+      padding: 4px 0;
+      border-bottom: 1px dotted #e0e0e0;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo img {
+      width: 80px;
+    }
+
+    .cetak-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cetak-btn:hover {
+      background-color: #000;
+    }
+
+    @media print {
+      .cetak-btn {
+        display: none;
+      }
+
+      .ringkasan {
+        box-shadow: none;
+        border: none;
+      }
+
+      body {
+        background: none;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ringkasan">
+    <div class="logo">
+      <img src="Watch.jpeg" alt="Logo Toko">
+    </div>
+    <h2>Struk Pembelian Jam Tangan</h2>
+
+    <p id="nama"></p>
+    <p id="nomor"></p>
+    <p id="tanggal"></p>
+    <p id="produk"></p>
+    <p id="jumlah"></p>
+    <p id="alamat"></p>
+    <p id="metode"></p>
+    <p id="total"></p>
+
+    <button class="cetak-btn" onclick="window.print()">🖨️ Cetak Struk</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    document.getElementById('nama').textContent    = "Nama       : " + (params.get('nama') || '-');
+    document.getElementById('nomor').textContent   = "Nomor HP   : " + (params.get('nomor') || '-');
+    document.getElementById('tanggal').textContent = "Tanggal    : " + (params.get('tanggal') || '-');
+    document.getElementById('produk').textContent  = "Produk     : " + (params.get('produk') || '-');
+    document.getElementById('jumlah').textContent  = "Jumlah     : " + (params.get('jumlah') || '-');
+    document.getElementById('alamat').textContent  = "Alamat     : " + decodeURIComponent(params.get('alamat') || '-');
+    document.getElementById('metode').textContent  = "Pembayaran : " + (params.get('metode') || '-');
+
+    const total = params.get('total');
+    if (total) {
+      document.getElementById('total').textContent = "Total Harga: Rp" + parseInt(total).toLocaleString('id-ID');
+    }
+  </script>
+
+</body>
+</html>
